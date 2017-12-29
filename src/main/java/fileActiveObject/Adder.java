@@ -1,28 +1,24 @@
-package producerComsumerActiveObject;
+package fileActiveObject;
 
-import fileActiveObject.Future;
-import fileActiveObject.Proxy;
-
-/**
- * Created by jacek on 29.11.17.
- */
-public class Consumer extends Thread {
+public class Adder extends Thread {
 
     private int id;
     private Proxy proxy;
+    private String fileName;
 
-    public Consumer(int id, Proxy proxy){
+    public Adder(int id, Proxy proxy, String fileName){
         this.id = id;
         this.proxy = proxy;
+        this.fileName = fileName;
     }
 
     public void run(){
         int counter = 0;
-        while(counter < 5){
-            Future consumed = proxy.remove();
+       // while(counter < 5){
+            Future consumed = proxy.add(this.fileName);
             long start = System.currentTimeMillis();
             while(!consumed.isReady()){
-                System.out.println("Konsumer " + id + " czeka.");
+                System.out.println("Dodawacz " + id + " czeka.");
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -30,16 +26,16 @@ public class Consumer extends Thread {
                 }
             }
             long stop = System.currentTimeMillis();
-            System.out.println("Czas oczekiwania to : " + (stop- start));
-            System.out.println("Konsument " + id
-                    + " zjadl: " + consumed.getObject().getName());
+            System.out.println("Czas oczekiwania dodawacza to : " + (stop- start));
+            System.out.println("Dodawacz " + id
+                    + " dodal: " + consumed.getObject().toString());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             counter += 1;
-        }
+      //  }
     }
 
     public int getId_(){

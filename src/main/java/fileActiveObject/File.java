@@ -13,11 +13,11 @@ public class File {
         this.content = content;
     }
 
-    private void setContent(String content){
+    public void setContent(String content){
         this.content = content;
     }
 
-    private void addContent(String addContent){
+    public void addContent(String addContent){
         this.content += addContent;
     }
 

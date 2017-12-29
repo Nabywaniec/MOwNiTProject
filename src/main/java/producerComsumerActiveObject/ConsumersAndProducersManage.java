@@ -19,9 +19,9 @@ public class ConsumersAndProducersManage implements IConsumersAndProducersManage
     private Proxy proxy;
     private final static int PROD_COUNT = 3;
     private final static int CONS_COUNT = 5;
-    private HashMap<Integer, Consumer> consumers = new HashMap<>();
-    private HashMap<Integer, Producer> producers = new HashMap<>();
-    private  HashMap<Integer, Reader> readers = new HashMap<>();
+    private HashMap<Integer, Consumer> consumers = new HashMap<Integer, Consumer>();
+    private HashMap<Integer, Producer> producers = new HashMap<Integer, Producer>();
+    private  HashMap<Integer, Reader> readers = new HashMap<Integer, Reader>();
     private ExecutorService executorService = Executors.newFixedThreadPool(8);
 
     public ConsumersAndProducersManage(int actual_id_consumers,int actual_id_producers,int actual_id_readers, Proxy proxy){

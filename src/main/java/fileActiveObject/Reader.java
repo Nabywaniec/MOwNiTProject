@@ -17,7 +17,7 @@ package fileActiveObject;
 
         public void run(){
             int counter = 0;
-            while(counter < 5){
+           // while(counter < 5){
                 Future consumed = proxy.read(this.fileName);
                 long start = System.currentTimeMillis();
                 while(!consumed.isReady()){
@@ -31,14 +31,14 @@ package fileActiveObject;
                 long stop = System.currentTimeMillis();
                 System.out.println("Czas oczekiwania czytelnika to : " + (stop- start));
                 System.out.println("Czytelnik " + id
-                        + " przeczytał: " + consumed.getObject().getName());
+                        + " przeczytał: " + consumed.getObject().toString());
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 counter += 1;
-            }
+          //  }
         }
 
         public int getId_(){

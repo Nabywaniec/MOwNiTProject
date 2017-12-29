@@ -13,25 +13,28 @@ public class Servant implements Proxy {
         this.scheduler = scheduler;
     }
 
-    public void add(File file){
-        this.scheduler.add(new AddFileRequest(this.buffer,file));
-
+    public Future add(String fileName){
+        Future future = new Future();
+        this.scheduler.add(new AddFileRequest(this.buffer, future, fileName));
+        return future;
     }
 
 
     public Future write(String fileName, String data) {
-        return null;
+        Future future = new Future();
+        this.scheduler.add(new WriteFileRequest(this.buffer,future, fileName, data));
+        return future;
     }
 
-    public void remove(File file){
+    public Future remove(String fileName){
         Future future = new Future();
-        this.scheduler.add(new DeleteFileRequest(buffer, future));
+        this.scheduler.add(new DeleteFileRequest(buffer, future, fileName));
         return future;
     }
 
     public Future read(String fileName){
         Future future = new Future();
-        this.scheduler.add(new ReadFileRequest(buffer, fileName ));
+        this.scheduler.add(new ReadFileRequest(buffer, future, fileName));
         return future;
     }
 

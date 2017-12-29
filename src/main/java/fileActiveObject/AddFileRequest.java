@@ -6,22 +6,24 @@ package fileActiveObject;
 public class AddFileRequest implements IMethod {
 
 
+    private Future future;
     private FileBuffer buffer;
-    private File file;
+    private String fileName;
 
-    public AddFileRequest(FileBuffer buffer, File file){
+    public AddFileRequest(FileBuffer buffer, Future future, String fileName){
         this.buffer = buffer;
-        this.file = file;
+        this.future = future;
+        this.fileName = fileName;
     }
 
-    @Override
+
     public boolean guard(){
         return !this.buffer.isFull();
     }
 
-    @Override
     public void call(){
-        this.buffer.add(file);
+        this.future.setFuture(this.buffer.add(fileName));
+        this.future.setFlag();
     }
 
 
