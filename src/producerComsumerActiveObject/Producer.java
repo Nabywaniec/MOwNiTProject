@@ -1,3 +1,8 @@
+package producerComsumerActiveObject;
+
+import fileActiveObject.File;
+import fileActiveObject.Proxy;
+
 import java.util.Random;
 
 /**

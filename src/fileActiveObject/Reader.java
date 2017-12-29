@@ -1,4 +1,6 @@
- /**
+package fileActiveObject;
+
+/**
      * Created by jacek on 29.11.17.
      * */
     public class Reader extends Thread {

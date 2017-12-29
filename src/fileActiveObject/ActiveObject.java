@@ -1,3 +1,5 @@
+package fileActiveObject;
+
 /**
  * Created by jacek on 29.11.17.
  */

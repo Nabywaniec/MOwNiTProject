@@ -1,3 +1,5 @@
+package fileActiveObject;
+
 /**
  * Created by jacek on 28.12.17.
  */
@@ -13,6 +15,10 @@ public class File {
 
     private void setContent(String content){
         this.content = content;
+    }
+
+    private void addContent(String addContent){
+        this.content += addContent;
     }
 
     public String getName(){

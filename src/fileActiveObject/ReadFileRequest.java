@@ -1,10 +1,12 @@
-public class ReadMethod implements IMethod {
+package fileActiveObject;
+
+public class ReadFileRequest implements IMethod {
 
     private FileBuffer buffer;
     private String fileName;
 
 
-    public  ReadMethod(FileBuffer buffer, String fileName){
+    public ReadFileRequest(FileBuffer buffer, String fileName){
         this.buffer = buffer;
         this.fileName = fileName;
     }

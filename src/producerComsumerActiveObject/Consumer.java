@@ -1,3 +1,8 @@
+package producerComsumerActiveObject;
+
+import fileActiveObject.Future;
+import fileActiveObject.Proxy;
+
 /**
  * Created by jacek on 29.11.17.
  */

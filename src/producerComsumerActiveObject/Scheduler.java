@@ -1,5 +1,8 @@
+package producerComsumerActiveObject;
+
+import producerComsumerActiveObject.IMethod;
+
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**

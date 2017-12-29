@@ -1,12 +1,14 @@
+package fileActiveObject;
+
 /**
  * Created by jacek on 29.11.17.
  */
-public class DeleteMethod  implements  IMethod{
+public class DeleteFileRequest implements IMethod {
 
     private FileBuffer buffer;
     private Future future;
 
-    public DeleteMethod(FileBuffer buffer, Future future) {
+    public DeleteFileRequest(FileBuffer buffer, Future future) {
         this.buffer = buffer;
         this.future = future;
     }

@@ -1,7 +1,10 @@
-import java.util.ArrayList;
+package producerComsumerActiveObject;
+
+import fileActiveObject.Proxy;
+import fileActiveObject.Reader;
+import producerComsumerActiveObject.Consumer;
+
 import java.util.HashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

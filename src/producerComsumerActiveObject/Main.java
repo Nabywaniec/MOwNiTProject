@@ -1,3 +1,9 @@
+package producerComsumerActiveObject;
+
+import fileActiveObject.ActiveObject;
+import fileActiveObject.Proxy;
+import producerComsumerActiveObject.ConsumersAndProducersManage;
+
 /**
  * Created by jacek on 29.11.17.
  */

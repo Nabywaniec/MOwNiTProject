@@ -1,3 +1,5 @@
+package fileActiveObject;
+
 /**
  * Created by jacek on 29.11.17.
  */
@@ -12,19 +14,24 @@ public class Servant implements Proxy {
     }
 
     public void add(File file){
-        this.scheduler.add(new AddMethod(this.buffer,file));
+        this.scheduler.add(new AddFileRequest(this.buffer,file));
 
     }
 
-    public Future remove(){
+
+    public Future write(String fileName, String data) {
+        return null;
+    }
+
+    public void remove(File file){
         Future future = new Future();
-        this.scheduler.add(new DeleteMethod(buffer, future));
+        this.scheduler.add(new DeleteFileRequest(buffer, future));
         return future;
     }
 
     public Future read(String fileName){
         Future future = new Future();
-        this.scheduler.add(new ReadMethod(buffer, fileName ));
+        this.scheduler.add(new ReadFileRequest(buffer, fileName ));
         return future;
     }
 
