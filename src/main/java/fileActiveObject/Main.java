@@ -18,14 +18,15 @@ public class Main {
 
     public static void main(String[] argv) throws InterruptedException {
         ActiveObject activeObject = new ActiveObject(ACTIVE_OBJECTS);
+        TimeManager timeManager = activeObject.getTimer();
         Proxy proxy = activeObject.getProxy();
-        Adder a = new Adder(1, proxy, "1");
+        Adder a = new Adder(1, proxy, "1", timeManager);
         Reader[] r = new Reader[N];
         Writer[] w = new Writer[N];
-        Deleter d = new Deleter(1,proxy,"1");
+        Deleter d = new Deleter(1,proxy,"1", timeManager);
         for(int i = 0; i < N; i++){
-            r[i] = new Reader(i, proxy,"1");
-            w[i] = new Writer(i, proxy,"1", randomStringGenerator.generate(10));
+            r[i] = new Reader(i, proxy,"1", timeManager);
+            w[i] = new Writer(i, proxy,"1", randomStringGenerator.generate(10), timeManager);
 
         }
 

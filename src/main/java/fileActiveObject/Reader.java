@@ -8,11 +8,14 @@ package fileActiveObject;
         private int id;
         private Proxy proxy;
         private String fileName;
+        private TimeManager timeManager;
 
-        public Reader(int id, Proxy proxy, String fileName){
+        public Reader(int id, Proxy proxy, String fileName, TimeManager timeManager){
             this.id = id;
             this.proxy = proxy;
             this.fileName = fileName;
+            this.timeManager = timeManager;
+
         }
 
         public void run(){
@@ -29,7 +32,8 @@ package fileActiveObject;
                     }
                 }
                 long stop = System.currentTimeMillis();
-                System.out.println("Czas oczekiwania czytelnika to : " + (stop- start));
+               // System.out.println("Czas oczekiwania czytelnika to : " + (stop- start));
+                this.timeManager.addMeasurement(new Measurement("Reader",  (stop - start)));
                 System.out.println("Czytelnik " + id
                         + " przeczytał: " + consumed.getObject().toString());
                 try {

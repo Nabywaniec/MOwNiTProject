@@ -5,11 +5,13 @@ public class Adder extends Thread {
     private int id;
     private Proxy proxy;
     private String fileName;
+    private TimeManager timeManager;
 
-    public Adder(int id, Proxy proxy, String fileName){
+    public Adder(int id, Proxy proxy, String fileName, TimeManager timeManager){
         this.id = id;
         this.proxy = proxy;
         this.fileName = fileName;
+        this.timeManager = timeManager;
     }
 
     public void run(){
@@ -26,7 +28,7 @@ public class Adder extends Thread {
                 }
             }
             long stop = System.currentTimeMillis();
-            System.out.println("Czas oczekiwania dodawacza to : " + (stop- start));
+            this.timeManager.addMeasurement(new Measurement("Adder", (stop - start)));
             System.out.println("Dodawacz " + id
                     + " dodal: " + consumed.getObject().toString());
             try {
