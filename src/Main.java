@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] argv) throws InterruptedException {
         ActiveObject activeObject = new ActiveObject(ACTIVE_OBJECTS);
         Proxy proxy = activeObject.getProxy();
-        ConsumersAndProducersManage manage = new ConsumersAndProducersManage(0,0, proxy);
+        ConsumersAndProducersManage manage = new ConsumersAndProducersManage(0,0,9, proxy);
         manage.begin();
         manage.startProducer();
         manage.startConsumer();

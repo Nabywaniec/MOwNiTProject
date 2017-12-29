@@ -22,5 +22,11 @@ public class Servant implements Proxy {
         return future;
     }
 
+    public Future read(String fileName){
+        Future future = new Future();
+        this.scheduler.add(new ReadMethod(buffer, fileName ));
+        return future;
+    }
+
 
 }

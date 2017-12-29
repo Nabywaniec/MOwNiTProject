@@ -12,16 +12,19 @@ public class ConsumersAndProducersManage implements IConsumersAndProducersManage
 
     private int actual_id_consumers;
     private int actual_id_producers;
+    private int actual_id_readers;
     private Proxy proxy;
     private final static int PROD_COUNT = 3;
     private final static int CONS_COUNT = 5;
     private HashMap<Integer, Consumer> consumers = new HashMap<>();
     private HashMap<Integer, Producer> producers = new HashMap<>();
+    private  HashMap<Integer, Reader> readers = new HashMap<>();
     private ExecutorService executorService = Executors.newFixedThreadPool(8);
 
-    public ConsumersAndProducersManage(int actual_id_consumers,int actual_id_producers, Proxy proxy){
+    public ConsumersAndProducersManage(int actual_id_consumers,int actual_id_producers,int actual_id_readers, Proxy proxy){
         this.actual_id_consumers = actual_id_consumers;
         this.actual_id_producers = actual_id_producers;
+        this.actual_id_readers = actual_id_readers;
         this.proxy = proxy;
     }
 
@@ -59,6 +62,22 @@ public class ConsumersAndProducersManage implements IConsumersAndProducersManage
         }
     }
 
+    public void startReader(){
+        Reader new_reader = new Reader(actual_id_readers,proxy, new Integer(10).toString());
+        readers.put(actual_id_readers, new_reader);
+        actual_id_readers += 1;
+        executorService.submit(new_reader);
+    }
+
+    public void deleteReader(int id){
+        try {
+           readers.get(id).join();
+           readers.remove(id);
+        }catch (InterruptedException ie){
+            ie.printStackTrace();
+        }
+    }
+
     public void begin() {
 
         actual_id_producers = PROD_COUNT;
@@ -83,6 +102,7 @@ public class ConsumersAndProducersManage implements IConsumersAndProducersManage
 
             startProducer();
             startConsumer();
+            startReader();
 
             for (int i = 0; i < PROD_COUNT; i++) {
                 producers.get(i).join();
@@ -95,6 +115,10 @@ public class ConsumersAndProducersManage implements IConsumersAndProducersManage
             }
             deleteConsumer(5);
             deleteProducer(3);
+            //deleteReader(0);
+
+
+
         }catch (InterruptedException ie){
             ie.printStackTrace();
         }

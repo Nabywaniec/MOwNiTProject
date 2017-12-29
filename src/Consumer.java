@@ -15,6 +15,7 @@ public class Consumer extends Thread {
         int counter = 0;
         while(counter < 5){
             Future consumed = proxy.remove();
+            long start = System.currentTimeMillis();
             while(!consumed.isReady()){
                 System.out.println("Konsumer " + id + " czeka.");
                 try {
@@ -23,6 +24,8 @@ public class Consumer extends Thread {
                     e.printStackTrace();
                 }
             }
+            long stop = System.currentTimeMillis();
+            System.out.println("Czas oczekiwania to : " + (stop- start));
             System.out.println("Konsument " + id
                     + " zjadl: " + consumed.getObject().getName());
             try {

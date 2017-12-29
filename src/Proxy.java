@@ -5,5 +5,6 @@ public interface Proxy {
 
     Future remove();
     void add(File file);
+    Future read(String fileName);
 
 }

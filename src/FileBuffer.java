@@ -36,6 +36,14 @@ public class FileBuffer {
         return null;
     }
 
+    public String readFile(String fileName){
+        if(findFile(fileName) != null){
+            File found = findFile(fileName) ;
+            return found.getContent();
+        }
+        return "";
+    }
+
     public boolean isFull(){
         return this.files.size() == buffersize;
     }
