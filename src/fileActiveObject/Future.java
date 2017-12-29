@@ -3,6 +3,8 @@ package fileActiveObject;
 /**
  * Created by jacek on 29.11.17.
  */
+
+//TODO
 public class Future {
 
     private File file;
