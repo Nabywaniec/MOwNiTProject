@@ -5,6 +5,8 @@ import java.util.LinkedList;
 /**
  * Created by jacek on 28.12.17.
  */
+
+//TODO
 public class FileBuffer {
 
     private LinkedList<File> files = new LinkedList<>();
