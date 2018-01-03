@@ -33,7 +33,7 @@ public class TimeManager {
             System.out.println("ok");
             PrintWriter fileMeasurement = new PrintWriter("pomiary.txt");
             System.out.println("ok");
-            fileMeasurement.println("");
+            fileMeasurement.println(toFile);
             fileMeasurement.close();
             System.out.println("ok");
         }catch (FileNotFoundException fe){
