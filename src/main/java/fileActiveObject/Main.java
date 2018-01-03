@@ -30,13 +30,16 @@ public class Main {
 
         }
 
+       // d.run();
         a.run();
-        for(int i = 0; i < N; i++){
+        for(int i = 0; i < 5; i++){
             r[i].run();
             w[i].run();
 
+
         }
         d.run();
-
+        System.out.println("Completed");
+        timeManager.saveToFile();
     }
 }
