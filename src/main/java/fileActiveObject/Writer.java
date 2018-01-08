@@ -19,30 +19,17 @@ public class Writer extends Thread {
     }
 
     public void run(){
-        int counter = 0;
-        //while(counter < 5){
-            Future consumed = proxy.write(this.fileName, this.data);
-            long start = System.currentTimeMillis();
-            while(!consumed.isReady()){
-                System.out.println("Pisarz " + id + " czeka.");
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            long stop = System.currentTimeMillis();
-            //System.out.println("Czas oczekiwania czytelnika to : " + (stop- start));
-            this.timeManager.addMeasurement(new Measurement("Writter", (stop - start)));
-            System.out.println("Pisarz " + id
-                    + " napisal: " + consumed.getObject().toString());
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            counter += 1;
-       // }
+
+        Future consumed = proxy.write(this.fileName, this.data);
+        long start = System.currentTimeMillis();
+
+        Boolean isWritten = (Boolean) consumed.getObject();
+        long stop = System.currentTimeMillis();
+        //System.out.println("Czas oczekiwania czytelnika to : " + (stop- start));
+        this.timeManager.addMeasurement(new Measurement("Writer", (stop - start)));
+        System.out.println("Pisarz " + id
+                + " napisal: " + isWritten);
+
     }
 
     public int getId_(){
