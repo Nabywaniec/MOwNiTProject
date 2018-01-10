@@ -10,8 +10,9 @@ package fileActiveObject;
             this.miliSec = miliSec;
         }
 
+
         public String getType() {
-            return "User " + type + "  ,time :  " + miliSec;
+            return type; // "User " + type + "  ,time :  " + miliSec;
         }
     }
 

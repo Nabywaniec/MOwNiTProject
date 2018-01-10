@@ -32,6 +32,7 @@ public class Main {
         }
 
 
+        d.start();
         a.start();
         a1.start();
         for(int i = 0; i < N; i++){
@@ -41,11 +42,11 @@ public class Main {
 
 
         }
-        d.start();
+
 
         System.out.println(java.lang.Thread.activeCount());
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < N; i++){
 
             r[i].join();
             w[i].join();
