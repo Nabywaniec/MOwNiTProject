@@ -7,7 +7,7 @@ import org.apache.commons.text.RandomStringGenerator;
 
 public class Main {
     private final static int ACTIVE_OBJECTS = 10;
-    private static final int N = 5;
+    private static final int N = 100;
     private static final RandomStringGenerator randomStringGenerator =
             new RandomStringGenerator.Builder()
                     .withinRange('0', 'z')
